@@ -1,0 +1,30 @@
+
+plugin.tx_gnilive_scores {
+	view {
+		# cat=plugin.tx_gnilive_scores/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:gnilive/Resources/Private/Templates/
+		# cat=plugin.tx_gnilive_scores/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:gnilive/Resources/Private/Partials/
+		# cat=plugin.tx_gnilive_scores/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:gnilive/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_gnilive_scores//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}
+
+plugin.tx_gnilive_match {
+	view {
+		# cat=plugin.tx_gnilive_match/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:gnilive/Resources/Private/Templates/
+		# cat=plugin.tx_gnilive_match/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:gnilive/Resources/Private/Partials/
+		# cat=plugin.tx_gnilive_match/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:gnilive/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_gnilive_match//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}

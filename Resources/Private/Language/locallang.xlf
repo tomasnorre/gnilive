@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-02-27T19:07:59Z" product-name="gnilive">
+		<header/>
+		<body>
+			<trans-unit id="tx_gnilive_domain_model_player">
+				<source>Player</source>
+			</trans-unit>
+			<trans-unit id="tx_gnilive_domain_model_player.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_gnilive_domain_model_player.captain">
+				<source>Captain</source>
+			</trans-unit>
+			<trans-unit id="tx_gnilive_domain_model_player.team">
+				<source>Team</source>
+			</trans-unit>
+			<trans-unit id="tx_gnilive_domain_model_team">
+				<source>Team</source>
+			</trans-unit>
+			<trans-unit id="tx_gnilive_domain_model_team.team_name">
+				<source>Team Name</source>
+			</trans-unit>
+			<trans-unit id="tx_gnilive_domain_model_match">
+				<source>Match</source>
+			</trans-unit>
+			<trans-unit id="tx_gnilive_domain_model_match.match_type">
+				<source>Match Type</source>
+			</trans-unit>
+			<trans-unit id="tx_gnilive_domain_model_match.score">
+				<source>Score</source>
+			</trans-unit>
+			<trans-unit id="tx_gnilive_domain_model_match.tee_time">
+				<source>Tee Time</source>
+			</trans-unit>
+			<trans-unit id="tx_gnilive_domain_model_match.player_one_team_a">
+				<source>Player One Team A</source>
+			</trans-unit>
+			<trans-unit id="tx_gnilive_domain_model_match.player_two_team_a">
+				<source>Player Two Team A</source>
+			</trans-unit>
+			<trans-unit id="tx_gnilive_domain_model_match.player_one_team_b">
+				<source>Player One Team B</source>
+			</trans-unit>
+			<trans-unit id="tx_gnilive_domain_model_match.player_two_team_b">
+				<source>Player Two Team B</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
