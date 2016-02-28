@@ -56,30 +56,51 @@ class Match extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * playerOneTeamA
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Tnm\Gnilive\Domain\Model\Player>
+     * @var \Tnm\Gnilive\Domain\Model\Player
      */
     protected $playerOneTeamA = null;
     
     /**
      * playerTwoTeamA
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Tnm\Gnilive\Domain\Model\Player>
+     * @var \Tnm\Gnilive\Domain\Model\Player
      */
     protected $playerTwoTeamA = null;
     
     /**
      * playerOneTeamB
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Tnm\Gnilive\Domain\Model\Player>
+     * @var \Tnm\Gnilive\Domain\Model\Player
      */
     protected $playerOneTeamB = null;
     
     /**
      * playerTwoTeamB
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Tnm\Gnilive\Domain\Model\Player>
+     * @var \Tnm\Gnilive\Domain\Model\Player
      */
     protected $playerTwoTeamB = null;
+    
+    /**
+     * matchTeamA
+     *
+     * @var \Tnm\Gnilive\Domain\Model\Team
+     */
+    protected $matchTeamA = null;
+    
+    /**
+     * matchTeamB
+     *
+     * @var \Tnm\Gnilive\Domain\Model\Team
+     */
+    protected $matchTeamB = null;
+    
+    /**
+     * currentHole
+     *
+     * @var string
+     */
+    protected $currentHole = '';
     
     /**
      * Returns the matchType
@@ -163,38 +184,55 @@ class Match extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected function initStorageObjects()
     {
-        $this->playerOneTeamA = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->playerTwoTeamA = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->playerOneTeamB = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->playerTwoTeamB = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        
     }
     
     /**
-     * Adds a Player
+     * Returns the matchTeamA
      *
-     * @param \Tnm\Gnilive\Domain\Model\Player $playerOneTeamA
-     * @return void
+     * @return \Tnm\Gnilive\Domain\Model\Team $matchTeamA
      */
-    public function addPlayerOneTeamA(\Tnm\Gnilive\Domain\Model\Player $playerOneTeamA)
+    public function getMatchTeamA()
     {
-        $this->playerOneTeamA->attach($playerOneTeamA);
+        return $this->matchTeamA;
     }
     
     /**
-     * Removes a Player
+     * Sets the matchTeamA
      *
-     * @param \Tnm\Gnilive\Domain\Model\Player $playerOneTeamAToRemove The Player to be removed
+     * @param \Tnm\Gnilive\Domain\Model\Team $matchTeamA
      * @return void
      */
-    public function removePlayerOneTeamA(\Tnm\Gnilive\Domain\Model\Player $playerOneTeamAToRemove)
+    public function setMatchTeamA(\Tnm\Gnilive\Domain\Model\Team $matchTeamA)
     {
-        $this->playerOneTeamA->detach($playerOneTeamAToRemove);
+        $this->matchTeamA = $matchTeamA;
+    }
+    
+    /**
+     * Returns the matchTeamB
+     *
+     * @return \Tnm\Gnilive\Domain\Model\Team $matchTeamB
+     */
+    public function getMatchTeamB()
+    {
+        return $this->matchTeamB;
+    }
+    
+    /**
+     * Sets the matchTeamB
+     *
+     * @param \Tnm\Gnilive\Domain\Model\Team $matchTeamB
+     * @return void
+     */
+    public function setMatchTeamB(\Tnm\Gnilive\Domain\Model\Team $matchTeamB)
+    {
+        $this->matchTeamB = $matchTeamB;
     }
     
     /**
      * Returns the playerOneTeamA
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Tnm\Gnilive\Domain\Model\Player> $playerOneTeamA
+     * @return \Tnm\Gnilive\Domain\Model\Player $playerOneTeamA
      */
     public function getPlayerOneTeamA()
     {
@@ -204,83 +242,18 @@ class Match extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the playerOneTeamA
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Tnm\Gnilive\Domain\Model\Player> $playerOneTeamA
+     * @param \Tnm\Gnilive\Domain\Model\Player $playerOneTeamA
      * @return void
      */
-    public function setPlayerOneTeamA(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $playerOneTeamA)
+    public function setPlayerOneTeamA(\Tnm\Gnilive\Domain\Model\Player $playerOneTeamA)
     {
         $this->playerOneTeamA = $playerOneTeamA;
     }
     
     /**
-     * Adds a Player
-     *
-     * @param \Tnm\Gnilive\Domain\Model\Player $playerTwoTeamA
-     * @return void
-     */
-    public function addPlayerTwoTeamA(\Tnm\Gnilive\Domain\Model\Player $playerTwoTeamA)
-    {
-        $this->playerTwoTeamA->attach($playerTwoTeamA);
-    }
-    
-    /**
-     * Removes a Player
-     *
-     * @param \Tnm\Gnilive\Domain\Model\Player $playerTwoTeamAToRemove The Player to be removed
-     * @return void
-     */
-    public function removePlayerTwoTeamA(\Tnm\Gnilive\Domain\Model\Player $playerTwoTeamAToRemove)
-    {
-        $this->playerTwoTeamA->detach($playerTwoTeamAToRemove);
-    }
-    
-    /**
-     * Returns the playerTwoTeamA
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Tnm\Gnilive\Domain\Model\Player> $playerTwoTeamA
-     */
-    public function getPlayerTwoTeamA()
-    {
-        return $this->playerTwoTeamA;
-    }
-    
-    /**
-     * Sets the playerTwoTeamA
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Tnm\Gnilive\Domain\Model\Player> $playerTwoTeamA
-     * @return void
-     */
-    public function setPlayerTwoTeamA(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $playerTwoTeamA)
-    {
-        $this->playerTwoTeamA = $playerTwoTeamA;
-    }
-    
-    /**
-     * Adds a Player
-     *
-     * @param \Tnm\Gnilive\Domain\Model\Player $playerOneTeamB
-     * @return void
-     */
-    public function addPlayerOneTeamB(\Tnm\Gnilive\Domain\Model\Player $playerOneTeamB)
-    {
-        $this->playerOneTeamB->attach($playerOneTeamB);
-    }
-    
-    /**
-     * Removes a Player
-     *
-     * @param \Tnm\Gnilive\Domain\Model\Player $playerOneTeamBToRemove The Player to be removed
-     * @return void
-     */
-    public function removePlayerOneTeamB(\Tnm\Gnilive\Domain\Model\Player $playerOneTeamBToRemove)
-    {
-        $this->playerOneTeamB->detach($playerOneTeamBToRemove);
-    }
-    
-    /**
      * Returns the playerOneTeamB
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Tnm\Gnilive\Domain\Model\Player> $playerOneTeamB
+     * @return \Tnm\Gnilive\Domain\Model\Player $playerOneTeamB
      */
     public function getPlayerOneTeamB()
     {
@@ -290,40 +263,39 @@ class Match extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the playerOneTeamB
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Tnm\Gnilive\Domain\Model\Player> $playerOneTeamB
+     * @param \Tnm\Gnilive\Domain\Model\Player $playerOneTeamB
      * @return void
      */
-    public function setPlayerOneTeamB(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $playerOneTeamB)
+    public function setPlayerOneTeamB(\Tnm\Gnilive\Domain\Model\Player $playerOneTeamB)
     {
         $this->playerOneTeamB = $playerOneTeamB;
     }
     
     /**
-     * Adds a Player
+     * Returns the playerTwoTeamA
      *
-     * @param \Tnm\Gnilive\Domain\Model\Player $playerTwoTeamB
-     * @return void
+     * @return \Tnm\Gnilive\Domain\Model\Player $playerTwoTeamA
      */
-    public function addPlayerTwoTeamB(\Tnm\Gnilive\Domain\Model\Player $playerTwoTeamB)
+    public function getPlayerTwoTeamA()
     {
-        $this->playerTwoTeamB->attach($playerTwoTeamB);
+        return $this->playerTwoTeamA;
     }
     
     /**
-     * Removes a Player
+     * Sets the playerTwoTeamA
      *
-     * @param \Tnm\Gnilive\Domain\Model\Player $playerTwoTeamBToRemove The Player to be removed
+     * @param \Tnm\Gnilive\Domain\Model\Player $playerTwoTeamA
      * @return void
      */
-    public function removePlayerTwoTeamB(\Tnm\Gnilive\Domain\Model\Player $playerTwoTeamBToRemove)
+    public function setPlayerTwoTeamA(\Tnm\Gnilive\Domain\Model\Player $playerTwoTeamA)
     {
-        $this->playerTwoTeamB->detach($playerTwoTeamBToRemove);
+        $this->playerTwoTeamA = $playerTwoTeamA;
     }
     
     /**
      * Returns the playerTwoTeamB
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Tnm\Gnilive\Domain\Model\Player> $playerTwoTeamB
+     * @return \Tnm\Gnilive\Domain\Model\Player $playerTwoTeamB
      */
     public function getPlayerTwoTeamB()
     {
@@ -333,12 +305,33 @@ class Match extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the playerTwoTeamB
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Tnm\Gnilive\Domain\Model\Player> $playerTwoTeamB
+     * @param \Tnm\Gnilive\Domain\Model\Player $playerTwoTeamB
      * @return void
      */
-    public function setPlayerTwoTeamB(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $playerTwoTeamB)
+    public function setPlayerTwoTeamB(\Tnm\Gnilive\Domain\Model\Player $playerTwoTeamB)
     {
         $this->playerTwoTeamB = $playerTwoTeamB;
+    }
+    
+    /**
+     * Returns the currentHole
+     *
+     * @return string $currentHole
+     */
+    public function getCurrentHole()
+    {
+        return $this->currentHole;
+    }
+    
+    /**
+     * Sets the currentHole
+     *
+     * @param string $currentHole
+     * @return void
+     */
+    public function setCurrentHole($currentHole)
+    {
+        $this->currentHole = $currentHole;
     }
 
 }

@@ -137,17 +137,11 @@ return array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:gnilive/Resources/Private/Language/locallang_db.xlf:tx_gnilive_domain_model_player.team',
 			'config' => array(
-				'type' => 'inline',
+				'type' => 'select',
+				'renderType' => 'selectSingle',
 				'foreign_table' => 'tx_gnilive_domain_model_team',
 				'minitems' => 0,
 				'maxitems' => 1,
-				'appearance' => array(
-					'collapseAll' => 0,
-					'levelLinksPosition' => 'top',
-					'showSynchronizationLink' => 1,
-					'showPossibleLocalizationRecords' => 1,
-					'showAllLocalizationLink' => 1
-				),
 			),
 		),
 		

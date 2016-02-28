@@ -63,7 +63,7 @@
                             "propertyIsExcludeField": true,
                             "relationDescription": "",
                             "relationName": "team",
-                            "relationType": "zeroToOne",
+                            "relationType": "manyToOne",
                             "relationWire": "[wired]",
                             "uid": "869146978141"
                         }
@@ -103,21 +103,21 @@
                     "uid": "1428347402564"
                 },
                 "propertyGroup": {
-                    "properties": []
-                },
-                "relationGroup": {
-                    "relations": [
+                    "properties": [
                         {
-                            "foreignRelationClass": "",
-                            "lazyLoading": false,
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
                             "propertyIsExcludeField": true,
-                            "relationDescription": "",
-                            "relationName": "teamName",
-                            "relationType": "zeroToOne",
-                            "relationWire": "[wired]",
-                            "uid": "1225044352076"
+                            "propertyIsRequired": false,
+                            "propertyName": "teamName",
+                            "propertyType": "String",
+                            "uid": "1063667368203"
                         }
                     ]
+                },
+                "relationGroup": {
+                    "relations": []
                 }
             }
         },
@@ -170,9 +170,9 @@
                             "propertyDescription": "",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
-                            "propertyName": "score",
-                            "propertyType": "String",
-                            "uid": "950873259433"
+                            "propertyName": "teeTime",
+                            "propertyType": "DateTime",
+                            "uid": "455396087424"
                         },
                         {
                             "allowedFileTypes": "",
@@ -180,9 +180,19 @@
                             "propertyDescription": "",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
-                            "propertyName": "teeTime",
-                            "propertyType": "DateTime",
-                            "uid": "455396087424"
+                            "propertyName": "currentHole",
+                            "propertyType": "String",
+                            "uid": "928096477055"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "score",
+                            "propertyType": "String",
+                            "uid": "950873259433"
                         }
                     ]
                 },
@@ -194,7 +204,7 @@
                             "propertyIsExcludeField": true,
                             "relationDescription": "",
                             "relationName": "playerOneTeamA",
-                            "relationType": "manyToMany",
+                            "relationType": "manyToOne",
                             "relationWire": "[wired]",
                             "uid": "1116987484826"
                         },
@@ -204,7 +214,7 @@
                             "propertyIsExcludeField": true,
                             "relationDescription": "",
                             "relationName": "playerTwoTeamA",
-                            "relationType": "manyToMany",
+                            "relationType": "manyToOne",
                             "relationWire": "[wired]",
                             "uid": "1064551056588"
                         },
@@ -214,7 +224,7 @@
                             "propertyIsExcludeField": true,
                             "relationDescription": "",
                             "relationName": "playerOneTeamB",
-                            "relationType": "manyToMany",
+                            "relationType": "manyToOne",
                             "relationWire": "[wired]",
                             "uid": "787025387109"
                         },
@@ -224,9 +234,29 @@
                             "propertyIsExcludeField": true,
                             "relationDescription": "",
                             "relationName": "playerTwoTeamB",
-                            "relationType": "manyToMany",
+                            "relationType": "manyToOne",
                             "relationWire": "[wired]",
                             "uid": "1339916301709"
+                        },
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "",
+                            "relationName": "matchTeamA",
+                            "relationType": "manyToOne",
+                            "relationWire": "[wired]",
+                            "uid": "1127699901429"
+                        },
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "",
+                            "relationName": "matchTeamB",
+                            "relationType": "manyToOne",
+                            "relationWire": "[wired]",
+                            "uid": "479722965257"
                         }
                     ]
                 }
@@ -342,10 +372,34 @@
                 "terminal": "SOURCES",
                 "uid": "310089880021"
             }
+        },
+        {
+            "src": {
+                "moduleId": 2,
+                "terminal": "relationWire_4",
+                "uid": "1127699901429"
+            },
+            "tgt": {
+                "moduleId": 1,
+                "terminal": "SOURCES",
+                "uid": "1428347402564"
+            }
+        },
+        {
+            "src": {
+                "moduleId": 2,
+                "terminal": "relationWire_5",
+                "uid": "479722965257"
+            },
+            "tgt": {
+                "moduleId": 1,
+                "terminal": "SOURCES",
+                "uid": "1428347402564"
+            }
         }
     ],
     "log": {
-        "last_modified": "2016-02-27 07:07",
+        "last_modified": "2016-02-28 06:05",
         "extension_builder_version": "7.6.0",
         "be_user": " (1)"
     }

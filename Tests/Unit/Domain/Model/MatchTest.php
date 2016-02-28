@@ -66,31 +66,6 @@ class MatchTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 	/**
 	 * @test
 	 */
-	public function getScoreReturnsInitialValueForString()
-	{
-		$this->assertSame(
-			'',
-			$this->subject->getScore()
-		);
-	}
-
-	/**
-	 * @test
-	 */
-	public function setScoreForStringSetsScore()
-	{
-		$this->subject->setScore('Conceived at T3CON10');
-
-		$this->assertAttributeEquals(
-			'Conceived at T3CON10',
-			'score',
-			$this->subject
-		);
-	}
-
-	/**
-	 * @test
-	 */
 	public function getTeeTimeReturnsInitialValueForDateTime()
 	{
 		$this->assertEquals(
@@ -117,11 +92,60 @@ class MatchTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 	/**
 	 * @test
 	 */
+	public function getCurrentHoleReturnsInitialValueForString()
+	{
+		$this->assertSame(
+			'',
+			$this->subject->getCurrentHole()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setCurrentHoleForStringSetsCurrentHole()
+	{
+		$this->subject->setCurrentHole('Conceived at T3CON10');
+
+		$this->assertAttributeEquals(
+			'Conceived at T3CON10',
+			'currentHole',
+			$this->subject
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function getScoreReturnsInitialValueForString()
+	{
+		$this->assertSame(
+			'',
+			$this->subject->getScore()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setScoreForStringSetsScore()
+	{
+		$this->subject->setScore('Conceived at T3CON10');
+
+		$this->assertAttributeEquals(
+			'Conceived at T3CON10',
+			'score',
+			$this->subject
+		);
+	}
+
+	/**
+	 * @test
+	 */
 	public function getPlayerOneTeamAReturnsInitialValueForPlayer()
 	{
-		$newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$this->assertEquals(
-			$newObjectStorage,
+			NULL,
 			$this->subject->getPlayerOneTeamA()
 		);
 	}
@@ -129,15 +153,13 @@ class MatchTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 	/**
 	 * @test
 	 */
-	public function setPlayerOneTeamAForObjectStorageContainingPlayerSetsPlayerOneTeamA()
+	public function setPlayerOneTeamAForPlayerSetsPlayerOneTeamA()
 	{
-		$playerOneTeamA = new \Tnm\Gnilive\Domain\Model\Player();
-		$objectStorageHoldingExactlyOnePlayerOneTeamA = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-		$objectStorageHoldingExactlyOnePlayerOneTeamA->attach($playerOneTeamA);
-		$this->subject->setPlayerOneTeamA($objectStorageHoldingExactlyOnePlayerOneTeamA);
+		$playerOneTeamAFixture = new \Tnm\Gnilive\Domain\Model\Player();
+		$this->subject->setPlayerOneTeamA($playerOneTeamAFixture);
 
 		$this->assertAttributeEquals(
-			$objectStorageHoldingExactlyOnePlayerOneTeamA,
+			$playerOneTeamAFixture,
 			'playerOneTeamA',
 			$this->subject
 		);
@@ -146,38 +168,10 @@ class MatchTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 	/**
 	 * @test
 	 */
-	public function addPlayerOneTeamAToObjectStorageHoldingPlayerOneTeamA()
-	{
-		$playerOneTeamA = new \Tnm\Gnilive\Domain\Model\Player();
-		$playerOneTeamAObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('attach'), array(), '', FALSE);
-		$playerOneTeamAObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($playerOneTeamA));
-		$this->inject($this->subject, 'playerOneTeamA', $playerOneTeamAObjectStorageMock);
-
-		$this->subject->addPlayerOneTeamA($playerOneTeamA);
-	}
-
-	/**
-	 * @test
-	 */
-	public function removePlayerOneTeamAFromObjectStorageHoldingPlayerOneTeamA()
-	{
-		$playerOneTeamA = new \Tnm\Gnilive\Domain\Model\Player();
-		$playerOneTeamAObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('detach'), array(), '', FALSE);
-		$playerOneTeamAObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($playerOneTeamA));
-		$this->inject($this->subject, 'playerOneTeamA', $playerOneTeamAObjectStorageMock);
-
-		$this->subject->removePlayerOneTeamA($playerOneTeamA);
-
-	}
-
-	/**
-	 * @test
-	 */
 	public function getPlayerTwoTeamAReturnsInitialValueForPlayer()
 	{
-		$newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$this->assertEquals(
-			$newObjectStorage,
+			NULL,
 			$this->subject->getPlayerTwoTeamA()
 		);
 	}
@@ -185,15 +179,13 @@ class MatchTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 	/**
 	 * @test
 	 */
-	public function setPlayerTwoTeamAForObjectStorageContainingPlayerSetsPlayerTwoTeamA()
+	public function setPlayerTwoTeamAForPlayerSetsPlayerTwoTeamA()
 	{
-		$playerTwoTeamA = new \Tnm\Gnilive\Domain\Model\Player();
-		$objectStorageHoldingExactlyOnePlayerTwoTeamA = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-		$objectStorageHoldingExactlyOnePlayerTwoTeamA->attach($playerTwoTeamA);
-		$this->subject->setPlayerTwoTeamA($objectStorageHoldingExactlyOnePlayerTwoTeamA);
+		$playerTwoTeamAFixture = new \Tnm\Gnilive\Domain\Model\Player();
+		$this->subject->setPlayerTwoTeamA($playerTwoTeamAFixture);
 
 		$this->assertAttributeEquals(
-			$objectStorageHoldingExactlyOnePlayerTwoTeamA,
+			$playerTwoTeamAFixture,
 			'playerTwoTeamA',
 			$this->subject
 		);
@@ -202,38 +194,10 @@ class MatchTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 	/**
 	 * @test
 	 */
-	public function addPlayerTwoTeamAToObjectStorageHoldingPlayerTwoTeamA()
-	{
-		$playerTwoTeamA = new \Tnm\Gnilive\Domain\Model\Player();
-		$playerTwoTeamAObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('attach'), array(), '', FALSE);
-		$playerTwoTeamAObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($playerTwoTeamA));
-		$this->inject($this->subject, 'playerTwoTeamA', $playerTwoTeamAObjectStorageMock);
-
-		$this->subject->addPlayerTwoTeamA($playerTwoTeamA);
-	}
-
-	/**
-	 * @test
-	 */
-	public function removePlayerTwoTeamAFromObjectStorageHoldingPlayerTwoTeamA()
-	{
-		$playerTwoTeamA = new \Tnm\Gnilive\Domain\Model\Player();
-		$playerTwoTeamAObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('detach'), array(), '', FALSE);
-		$playerTwoTeamAObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($playerTwoTeamA));
-		$this->inject($this->subject, 'playerTwoTeamA', $playerTwoTeamAObjectStorageMock);
-
-		$this->subject->removePlayerTwoTeamA($playerTwoTeamA);
-
-	}
-
-	/**
-	 * @test
-	 */
 	public function getPlayerOneTeamBReturnsInitialValueForPlayer()
 	{
-		$newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$this->assertEquals(
-			$newObjectStorage,
+			NULL,
 			$this->subject->getPlayerOneTeamB()
 		);
 	}
@@ -241,15 +205,13 @@ class MatchTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 	/**
 	 * @test
 	 */
-	public function setPlayerOneTeamBForObjectStorageContainingPlayerSetsPlayerOneTeamB()
+	public function setPlayerOneTeamBForPlayerSetsPlayerOneTeamB()
 	{
-		$playerOneTeamB = new \Tnm\Gnilive\Domain\Model\Player();
-		$objectStorageHoldingExactlyOnePlayerOneTeamB = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-		$objectStorageHoldingExactlyOnePlayerOneTeamB->attach($playerOneTeamB);
-		$this->subject->setPlayerOneTeamB($objectStorageHoldingExactlyOnePlayerOneTeamB);
+		$playerOneTeamBFixture = new \Tnm\Gnilive\Domain\Model\Player();
+		$this->subject->setPlayerOneTeamB($playerOneTeamBFixture);
 
 		$this->assertAttributeEquals(
-			$objectStorageHoldingExactlyOnePlayerOneTeamB,
+			$playerOneTeamBFixture,
 			'playerOneTeamB',
 			$this->subject
 		);
@@ -258,38 +220,10 @@ class MatchTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 	/**
 	 * @test
 	 */
-	public function addPlayerOneTeamBToObjectStorageHoldingPlayerOneTeamB()
-	{
-		$playerOneTeamB = new \Tnm\Gnilive\Domain\Model\Player();
-		$playerOneTeamBObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('attach'), array(), '', FALSE);
-		$playerOneTeamBObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($playerOneTeamB));
-		$this->inject($this->subject, 'playerOneTeamB', $playerOneTeamBObjectStorageMock);
-
-		$this->subject->addPlayerOneTeamB($playerOneTeamB);
-	}
-
-	/**
-	 * @test
-	 */
-	public function removePlayerOneTeamBFromObjectStorageHoldingPlayerOneTeamB()
-	{
-		$playerOneTeamB = new \Tnm\Gnilive\Domain\Model\Player();
-		$playerOneTeamBObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('detach'), array(), '', FALSE);
-		$playerOneTeamBObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($playerOneTeamB));
-		$this->inject($this->subject, 'playerOneTeamB', $playerOneTeamBObjectStorageMock);
-
-		$this->subject->removePlayerOneTeamB($playerOneTeamB);
-
-	}
-
-	/**
-	 * @test
-	 */
 	public function getPlayerTwoTeamBReturnsInitialValueForPlayer()
 	{
-		$newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$this->assertEquals(
-			$newObjectStorage,
+			NULL,
 			$this->subject->getPlayerTwoTeamB()
 		);
 	}
@@ -297,15 +231,13 @@ class MatchTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 	/**
 	 * @test
 	 */
-	public function setPlayerTwoTeamBForObjectStorageContainingPlayerSetsPlayerTwoTeamB()
+	public function setPlayerTwoTeamBForPlayerSetsPlayerTwoTeamB()
 	{
-		$playerTwoTeamB = new \Tnm\Gnilive\Domain\Model\Player();
-		$objectStorageHoldingExactlyOnePlayerTwoTeamB = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-		$objectStorageHoldingExactlyOnePlayerTwoTeamB->attach($playerTwoTeamB);
-		$this->subject->setPlayerTwoTeamB($objectStorageHoldingExactlyOnePlayerTwoTeamB);
+		$playerTwoTeamBFixture = new \Tnm\Gnilive\Domain\Model\Player();
+		$this->subject->setPlayerTwoTeamB($playerTwoTeamBFixture);
 
 		$this->assertAttributeEquals(
-			$objectStorageHoldingExactlyOnePlayerTwoTeamB,
+			$playerTwoTeamBFixture,
 			'playerTwoTeamB',
 			$this->subject
 		);
@@ -314,27 +246,52 @@ class MatchTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 	/**
 	 * @test
 	 */
-	public function addPlayerTwoTeamBToObjectStorageHoldingPlayerTwoTeamB()
+	public function getMatchTeamAReturnsInitialValueForTeam()
 	{
-		$playerTwoTeamB = new \Tnm\Gnilive\Domain\Model\Player();
-		$playerTwoTeamBObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('attach'), array(), '', FALSE);
-		$playerTwoTeamBObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($playerTwoTeamB));
-		$this->inject($this->subject, 'playerTwoTeamB', $playerTwoTeamBObjectStorageMock);
-
-		$this->subject->addPlayerTwoTeamB($playerTwoTeamB);
+		$this->assertEquals(
+			NULL,
+			$this->subject->getMatchTeamA()
+		);
 	}
 
 	/**
 	 * @test
 	 */
-	public function removePlayerTwoTeamBFromObjectStorageHoldingPlayerTwoTeamB()
+	public function setMatchTeamAForTeamSetsMatchTeamA()
 	{
-		$playerTwoTeamB = new \Tnm\Gnilive\Domain\Model\Player();
-		$playerTwoTeamBObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('detach'), array(), '', FALSE);
-		$playerTwoTeamBObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($playerTwoTeamB));
-		$this->inject($this->subject, 'playerTwoTeamB', $playerTwoTeamBObjectStorageMock);
+		$matchTeamAFixture = new \Tnm\Gnilive\Domain\Model\Team();
+		$this->subject->setMatchTeamA($matchTeamAFixture);
 
-		$this->subject->removePlayerTwoTeamB($playerTwoTeamB);
+		$this->assertAttributeEquals(
+			$matchTeamAFixture,
+			'matchTeamA',
+			$this->subject
+		);
+	}
 
+	/**
+	 * @test
+	 */
+	public function getMatchTeamBReturnsInitialValueForTeam()
+	{
+		$this->assertEquals(
+			NULL,
+			$this->subject->getMatchTeamB()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setMatchTeamBForTeamSetsMatchTeamB()
+	{
+		$matchTeamBFixture = new \Tnm\Gnilive\Domain\Model\Team();
+		$this->subject->setMatchTeamB($matchTeamBFixture);
+
+		$this->assertAttributeEquals(
+			$matchTeamBFixture,
+			'matchTeamB',
+			$this->subject
+		);
 	}
 }

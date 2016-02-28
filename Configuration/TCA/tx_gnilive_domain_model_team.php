@@ -120,17 +120,9 @@ return array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:gnilive/Resources/Private/Language/locallang_db.xlf:tx_gnilive_domain_model_team.team_name',
 			'config' => array(
-				'type' => 'inline',
-				'foreign_table' => '',
-				'minitems' => 0,
-				'maxitems' => 1,
-				'appearance' => array(
-					'collapseAll' => 0,
-					'levelLinksPosition' => 'top',
-					'showSynchronizationLink' => 1,
-					'showPossibleLocalizationRecords' => 1,
-					'showAllLocalizationLink' => 1
-				),
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
 			),
 		),
 		

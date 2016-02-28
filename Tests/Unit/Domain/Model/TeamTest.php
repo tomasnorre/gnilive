@@ -54,12 +54,25 @@ class TeamTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 	/**
 	 * @test
 	 */
-	public function getTeamNameReturnsInitialValueFor()
-	{	}
+	public function getTeamNameReturnsInitialValueForString()
+	{
+		$this->assertSame(
+			'',
+			$this->subject->getTeamName()
+		);
+	}
 
 	/**
 	 * @test
 	 */
-	public function setTeamNameForSetsTeamName()
-	{	}
+	public function setTeamNameForStringSetsTeamName()
+	{
+		$this->subject->setTeamName('Conceived at T3CON10');
+
+		$this->assertAttributeEquals(
+			'Conceived at T3CON10',
+			'teamName',
+			$this->subject
+		);
+	}
 }

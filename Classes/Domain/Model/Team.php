@@ -35,14 +35,14 @@ class Team extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * teamName
      *
-     * @var
+     * @var string
      */
-    protected $teamName = null;
+    protected $teamName = '';
     
     /**
      * Returns the teamName
      *
-     * @return \Tnm\Gnilive\Domain\Model\Player teamName
+     * @return string $teamName
      */
     public function getTeamName()
     {

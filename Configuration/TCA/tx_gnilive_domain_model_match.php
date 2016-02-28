@@ -19,14 +19,14 @@ return array(
 			'starttime' => 'starttime',
 			'endtime' => 'endtime',
 		),
-		'searchFields' => 'match_type,score,tee_time,player_one_team_a,player_two_team_a,player_one_team_b,player_two_team_b,',
+		'searchFields' => 'match_type,tee_time,current_hole,score,player_one_team_a,player_two_team_a,player_one_team_b,player_two_team_b,match_team_a,match_team_b,',
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('gnilive') . 'Resources/Public/Icons/tx_gnilive_domain_model_match.gif'
 	),
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, match_type, score, tee_time, player_one_team_a, player_two_team_a, player_one_team_b, player_two_team_b',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, match_type, tee_time, current_hole, score, player_one_team_a, player_two_team_a, player_one_team_b, player_two_team_b, match_team_a, match_team_b',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, match_type, score, tee_time, player_one_team_a, player_two_team_a, player_one_team_b, player_two_team_b, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, match_type, tee_time, current_hole, score, player_one_team_a, player_two_team_a, player_one_team_b, player_two_team_b, match_team_a, match_team_b, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -123,22 +123,11 @@ return array(
 				'type' => 'select',
 				'renderType' => 'selectSingle',
 				'items' => array(
-					array('Foursome', 0),
-					array('Fourball', 1),
-					array('Single', 2),
+					array('-- Label --', 0),
 				),
 				'size' => 1,
 				'maxitems' => 1,
 				'eval' => ''
-			),
-		),
-		'score' => array(
-			'exclude' => 1,
-			'label' => 'LLL:EXT:gnilive/Resources/Private/Language/locallang_db.xlf:tx_gnilive_domain_model_match.score',
-			'config' => array(
-				'type' => 'input',
-				'size' => 30,
-				'eval' => 'trim'
 			),
 		),
 		'tee_time' => array(
@@ -152,45 +141,33 @@ return array(
 				'default' => time()
 			),
 		),
+		'current_hole' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:gnilive/Resources/Private/Language/locallang_db.xlf:tx_gnilive_domain_model_match.current_hole',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
+			),
+		),
+		'score' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:gnilive/Resources/Private/Language/locallang_db.xlf:tx_gnilive_domain_model_match.score',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
+			),
+		),
 		'player_one_team_a' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:gnilive/Resources/Private/Language/locallang_db.xlf:tx_gnilive_domain_model_match.player_one_team_a',
 			'config' => array(
 				'type' => 'select',
-				'renderType' => 'selectMultipleSideBySide',
+				'renderType' => 'selectSingle',
 				'foreign_table' => 'tx_gnilive_domain_model_player',
-				'MM' => 'tx_gnilive_match_player_mm',
-				'size' => 10,
-				'autoSizeMax' => 30,
-				'maxitems' => 9999,
-				'multiple' => 0,
-				'wizards' => array(
-					'_PADDING' => 1,
-					'_VERTICAL' => 1,
-					'edit' => array(
-						'module' => array(
-							'name' => 'wizard_edit',
-						),
-						'type' => 'popup',
-						'title' => 'Edit',
-						'icon' => 'edit2.gif',
-						'popup_onlyOpenIfSelected' => 1,
-						'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-						),
-					'add' => Array(
-						'module' => array(
-							'name' => 'wizard_add',
-						),
-						'type' => 'script',
-						'title' => 'Create new',
-						'icon' => 'add.gif',
-						'params' => array(
-							'table' => 'tx_gnilive_domain_model_player',
-							'pid' => '###CURRENT_PID###',
-							'setValue' => 'prepend'
-						),
-					),
-				),
+				'minitems' => 0,
+				'maxitems' => 1,
 			),
 		),
 		'player_two_team_a' => array(
@@ -198,40 +175,10 @@ return array(
 			'label' => 'LLL:EXT:gnilive/Resources/Private/Language/locallang_db.xlf:tx_gnilive_domain_model_match.player_two_team_a',
 			'config' => array(
 				'type' => 'select',
-				'renderType' => 'selectMultipleSideBySide',
+				'renderType' => 'selectSingle',
 				'foreign_table' => 'tx_gnilive_domain_model_player',
-				'MM' => 'tx_gnilive_match_playertwoteama_player_mm',
-				'size' => 10,
-				'autoSizeMax' => 30,
-				'maxitems' => 9999,
-				'multiple' => 0,
-				'wizards' => array(
-					'_PADDING' => 1,
-					'_VERTICAL' => 1,
-					'edit' => array(
-						'module' => array(
-							'name' => 'wizard_edit',
-						),
-						'type' => 'popup',
-						'title' => 'Edit',
-						'icon' => 'edit2.gif',
-						'popup_onlyOpenIfSelected' => 1,
-						'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-						),
-					'add' => Array(
-						'module' => array(
-							'name' => 'wizard_add',
-						),
-						'type' => 'script',
-						'title' => 'Create new',
-						'icon' => 'add.gif',
-						'params' => array(
-							'table' => 'tx_gnilive_domain_model_player',
-							'pid' => '###CURRENT_PID###',
-							'setValue' => 'prepend'
-						),
-					),
-				),
+				'minitems' => 0,
+				'maxitems' => 1,
 			),
 		),
 		'player_one_team_b' => array(
@@ -239,40 +186,10 @@ return array(
 			'label' => 'LLL:EXT:gnilive/Resources/Private/Language/locallang_db.xlf:tx_gnilive_domain_model_match.player_one_team_b',
 			'config' => array(
 				'type' => 'select',
-				'renderType' => 'selectMultipleSideBySide',
+				'renderType' => 'selectSingle',
 				'foreign_table' => 'tx_gnilive_domain_model_player',
-				'MM' => 'tx_gnilive_match_playeroneteamb_player_mm',
-				'size' => 10,
-				'autoSizeMax' => 30,
-				'maxitems' => 9999,
-				'multiple' => 0,
-				'wizards' => array(
-					'_PADDING' => 1,
-					'_VERTICAL' => 1,
-					'edit' => array(
-						'module' => array(
-							'name' => 'wizard_edit',
-						),
-						'type' => 'popup',
-						'title' => 'Edit',
-						'icon' => 'edit2.gif',
-						'popup_onlyOpenIfSelected' => 1,
-						'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-						),
-					'add' => Array(
-						'module' => array(
-							'name' => 'wizard_add',
-						),
-						'type' => 'script',
-						'title' => 'Create new',
-						'icon' => 'add.gif',
-						'params' => array(
-							'table' => 'tx_gnilive_domain_model_player',
-							'pid' => '###CURRENT_PID###',
-							'setValue' => 'prepend'
-						),
-					),
-				),
+				'minitems' => 0,
+				'maxitems' => 1,
 			),
 		),
 		'player_two_team_b' => array(
@@ -280,40 +197,32 @@ return array(
 			'label' => 'LLL:EXT:gnilive/Resources/Private/Language/locallang_db.xlf:tx_gnilive_domain_model_match.player_two_team_b',
 			'config' => array(
 				'type' => 'select',
-				'renderType' => 'selectMultipleSideBySide',
+				'renderType' => 'selectSingle',
 				'foreign_table' => 'tx_gnilive_domain_model_player',
-				'MM' => 'tx_gnilive_match_playertwoteamb_player_mm',
-				'size' => 10,
-				'autoSizeMax' => 30,
-				'maxitems' => 9999,
-				'multiple' => 0,
-				'wizards' => array(
-					'_PADDING' => 1,
-					'_VERTICAL' => 1,
-					'edit' => array(
-						'module' => array(
-							'name' => 'wizard_edit',
-						),
-						'type' => 'popup',
-						'title' => 'Edit',
-						'icon' => 'edit2.gif',
-						'popup_onlyOpenIfSelected' => 1,
-						'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-						),
-					'add' => Array(
-						'module' => array(
-							'name' => 'wizard_add',
-						),
-						'type' => 'script',
-						'title' => 'Create new',
-						'icon' => 'add.gif',
-						'params' => array(
-							'table' => 'tx_gnilive_domain_model_player',
-							'pid' => '###CURRENT_PID###',
-							'setValue' => 'prepend'
-						),
-					),
-				),
+				'minitems' => 0,
+				'maxitems' => 1,
+			),
+		),
+		'match_team_a' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:gnilive/Resources/Private/Language/locallang_db.xlf:tx_gnilive_domain_model_match.match_team_a',
+			'config' => array(
+				'type' => 'select',
+				'renderType' => 'selectSingle',
+				'foreign_table' => 'tx_gnilive_domain_model_team',
+				'minitems' => 0,
+				'maxitems' => 1,
+			),
+		),
+		'match_team_b' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:gnilive/Resources/Private/Language/locallang_db.xlf:tx_gnilive_domain_model_match.match_team_b',
+			'config' => array(
+				'type' => 'select',
+				'renderType' => 'selectSingle',
+				'foreign_table' => 'tx_gnilive_domain_model_team',
+				'minitems' => 0,
+				'maxitems' => 1,
 			),
 		),
 		

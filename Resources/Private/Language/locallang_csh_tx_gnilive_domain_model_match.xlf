@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2016-02-27T19:07:59Z" product-name="gnilive">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-02-28T18:05:37Z" product-name="gnilive">
 		<header/>
 		<body>
 			<trans-unit id="match_type.description">
 				<source>matchType</source>
 			</trans-unit>
-			<trans-unit id="score.description">
-				<source>score</source>
-			</trans-unit>
 			<trans-unit id="tee_time.description">
 				<source>teeTime</source>
+			</trans-unit>
+			<trans-unit id="current_hole.description">
+				<source>currentHole</source>
+			</trans-unit>
+			<trans-unit id="score.description">
+				<source>score</source>
 			</trans-unit>
 			<trans-unit id="player_one_team_a.description">
 				<source>playerOneTeamA</source>
@@ -23,6 +26,12 @@
 			</trans-unit>
 			<trans-unit id="player_two_team_b.description">
 				<source>playerTwoTeamB</source>
+			</trans-unit>
+			<trans-unit id="match_team_a.description">
+				<source>matchTeamA</source>
+			</trans-unit>
+			<trans-unit id="match_team_b.description">
+				<source>matchTeamB</source>
 			</trans-unit>
 		</body>
 	</file>

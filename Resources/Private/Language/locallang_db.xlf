@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2016-02-27T19:07:59Z" product-name="gnilive">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-02-28T18:05:37Z" product-name="gnilive">
 		<header/>
 		<body>
 			<trans-unit id="tx_gnilive_domain_model_player">
@@ -27,11 +27,14 @@
 			<trans-unit id="tx_gnilive_domain_model_match.match_type">
 				<source>Match Type</source>
 			</trans-unit>
-			<trans-unit id="tx_gnilive_domain_model_match.score">
-				<source>Score</source>
-			</trans-unit>
 			<trans-unit id="tx_gnilive_domain_model_match.tee_time">
 				<source>Tee Time</source>
+			</trans-unit>
+			<trans-unit id="tx_gnilive_domain_model_match.current_hole">
+				<source>Current Hole</source>
+			</trans-unit>
+			<trans-unit id="tx_gnilive_domain_model_match.score">
+				<source>Score</source>
 			</trans-unit>
 			<trans-unit id="tx_gnilive_domain_model_match.player_one_team_a">
 				<source>Player One Team A</source>
@@ -44,6 +47,12 @@
 			</trans-unit>
 			<trans-unit id="tx_gnilive_domain_model_match.player_two_team_b">
 				<source>Player Two Team B</source>
+			</trans-unit>
+			<trans-unit id="tx_gnilive_domain_model_match.match_team_a">
+				<source>Match Team A</source>
+			</trans-unit>
+			<trans-unit id="tx_gnilive_domain_model_match.match_team_b">
+				<source>Match Team B</source>
 			</trans-unit>
 		</body>
 	</file>
